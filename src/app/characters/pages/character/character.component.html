@@ -1,0 +1,21 @@
+<mat-grid-list cols="1" *ngIf="!character; else divCharacter">
+    <mat-grid-tile>
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+<ng-template #divCharacter>
+    <mat-card class="example-card">
+        <mat-card-title-group>
+          <mat-card-title> {{character.name}}</mat-card-title>
+          <mat-card-subtitle>{{character.status}}</mat-card-subtitle>         
+          <img mat-card-xl-image src="{{character.image}}" alt="{{character.name}}" >
+        </mat-card-title-group>
+        <mat-card-content>
+            Estado: {{character.status}}<br>
+            Espacie: {{character.species}}<br>
+            Genero: {{character.gender}}<br>
+            Ubicacion: {{character.location.name}}<br>
+            Fecha de creacion: {{character.created}}<br>
+        </mat-card-content>
+      </mat-card>
+</ng-template>

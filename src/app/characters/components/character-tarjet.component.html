@@ -1,0 +1,11 @@
+<mat-card >
+    <mat-card-header>
+      <mat-card-title>{{character.name}}</mat-card-title>
+      <mat-card-subtitle>{{character.gender}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{character.image}}" alt="{{character.name}}">
+ 
+    <mat-card-actions>
+      <button mat-button [routerLink]="['/characters',character.id]">Informacion</button>
+    </mat-card-actions>
+</mat-card>

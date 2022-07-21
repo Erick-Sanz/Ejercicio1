@@ -1,0 +1,26 @@
+<mat-form-field appearance="fill">
+    <mat-label>Filtrar</mat-label>
+    <mat-select>
+      <mat-option (click)="filterByGender( 'Female' )">Mujeres</mat-option>
+      <mat-option (click)="filterByGender( 'Male' )">Hombres</mat-option>
+      <mat-option (click)="filterByGender( 'All' )">Todos</mat-option>
+    </mat-select>
+  </mat-form-field>
+<mat-divider></mat-divider>
+<mat-grid-list *ngIf="characters.length > 0" cols="4" rowHeight="15rem" gutterSize="20px" >
+    <mat-grid-tile *ngFor="let character of characters" colspan=1
+    rowspan=2>
+    <app-character-tarjet [character]="character"></app-character-tarjet>
+    </mat-grid-tile>
+    <mat-grid-tile colspan=4 >
+      <mat-paginator class="mat-elevatin-z8" 
+                     [length]="length"
+                     [pageIndex]="pageIndex"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="pageSizeOptions"
+                     (page)="pageEvent = getNewPage($event)"
+                     aria-label="Select page">
+      </mat-paginator>
+    </mat-grid-tile>
+</mat-grid-list>
+

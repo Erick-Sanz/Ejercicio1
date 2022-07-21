@@ -1,0 +1,36 @@
+
+    <mat-form-field class="container" appearance="fill">
+        <mat-label>Escribe tu busqueda</mat-label>
+        <input type="text"
+               placeholder=""
+               matInput
+               [(ngModel)]="searchTerm"
+               [matAutocomplete]="auto"
+               (input)="search()">
+        <mat-autocomplete autoActiveFirstOption 
+                          #auto="matAutocomplete"
+                          (optionSelected)="optionSelected($event)">
+          <mat-option *ngFor="let character of characters" [value]="character">
+            {{character.name}}
+          </mat-option>
+          <mat-option value="" *ngIf="characters.length===0 && searchTerm.trim().length > 0">
+            No se eonctro nada con {{searchTerm}}
+          </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="container" appearance="fill" >
+        <mat-label>Buscar por</mat-label>
+        <mat-select [(ngModel)]="filterSelect">
+          <mat-option value="name">Nombre</mat-option>
+          <mat-option value="status">Status</mat-option>
+          <mat-option value="species">Especie</mat-option>
+        </mat-select>
+      </mat-form-field>     
+
+<mat-divider></mat-divider>
+
+<mat-grid-list *ngIf="selectCharacter" cols="2" rowHeight="155px" >
+    <mat-grid-tile colspan=1 rowspan=3>
+        <app-character-tarjet [character]="selectCharacter"></app-character-tarjet>
+    </mat-grid-tile>
+</mat-grid-list>
